@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.stub.stub_Rest_gRPC.serviceGRPC.serviceSearchByF_Fio";
+
+message Name {
+  string id = 1;
+  string name = 2;
+  string surname = 3;
+  string patronymic = 4;
+}
+
+message BirthDateStamp {
+  int32 day = 1;
+  int32 month = 2;
+  int32 year = 3;
+}
+message BirthDate {
+  BirthDateStamp birthDatestamp = 1;
+}
+
+message IndividualByF {
+  string id = 1;
+  int32 version = 2;
+  Name individualName = 3;
+  BirthDate birthDate = 4;
+}
+message IndividualByFRequest {
+  string surname = 1;
+  string segment = 2;
+}
+message IndividualByFResponse {
+  repeated IndividualByF individual = 1;
+}
+
+message IndividualByFioRequest {
+  string name = 1;
+  string surname = 2;
+  string patronymic = 3;
+  string segment = 4;
+}
+message IndividualByFioResponse {
+  repeated IndividualByFio individual = 1;
+}
+message IndividualByFio {
+  string id = 1;
+  int32 version = 2;
+  Name individualName = 3;
+  BirthDate birthDate = 4;
+}
+
+service AbcPrivateBankingChatxSearchGatewayService {
+  rpc SearchByF(IndividualByFRequest) returns (IndividualByFResponse);
+  rpc SearchByFio(IndividualByFioRequest) returns (IndividualByFioResponse);
+}
