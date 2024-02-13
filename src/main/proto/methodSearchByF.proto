@@ -15,15 +15,40 @@ message BirthDateStamp {
   int32 month = 2;
   int32 year = 3;
 }
+
 message BirthDate {
   BirthDateStamp birthDatestamp = 1;
+}
+
+message PartyGroup{
+  string partyGroupDictCode = 1;
+}
+
+message PartyGroups {
+  repeated PartyGroup toPartyGroups = 1;
+  string accessibilityGroups = 2;
+  string highRiskGroups = 3;
+  string increasedInterestGroups = 4;
+  string insiderInfoGroups = 5;
+  string investorInfoGroups = 6;
+  string pfrGroups = 7;
+  string productGroups = 8;
+  string vipClientCategoryGroups = 9;
+  string visionGroup = 10;
+}
+
+message Error {
+  string message = 1;
 }
 
 message IndividualByF {
   string id = 1;
   int32 version = 2;
-  Name individualName = 3;
-  BirthDate birthDate = 4;
+ Name individualName = 3;
+ BirthDate birthDate = 4;
+  oneof optional {
+    PartyGroups partyGroups = 5;
+  };
 }
 message IndividualByFRequest {
   string surname = 1;
@@ -31,6 +56,17 @@ message IndividualByFRequest {
 }
 message IndividualByFResponse {
   repeated IndividualByF individual = 1;
+  repeated Error error = 2;
+}
+
+message IndividualByFio {
+  string id = 1;
+  int32 version = 2;
+  Name individualName = 3;
+  BirthDate birthDate = 4;
+  oneof optional {
+    PartyGroups partyGroups = 5;
+  };
 }
 
 message IndividualByFioRequest {
@@ -41,12 +77,8 @@ message IndividualByFioRequest {
 }
 message IndividualByFioResponse {
   repeated IndividualByFio individual = 1;
-}
-message IndividualByFio {
-  string id = 1;
-  int32 version = 2;
-  Name individualName = 3;
-  BirthDate birthDate = 4;
+  repeated Error error = 2;
+
 }
 
 service AbcPrivateBankingChatxSearchGatewayService {
