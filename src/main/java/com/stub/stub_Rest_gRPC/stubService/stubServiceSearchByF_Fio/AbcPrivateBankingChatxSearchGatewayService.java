@@ -2,6 +2,11 @@ package com.stub.stub_Rest_gRPC.stubService.stubServiceSearchByF_Fio;
 
 
 import com.stub.stub_Rest_gRPC.serviceGRPC.serviceSearchByF_Fio.*;
+import com.stub.stub_Rest_gRPC.utilit.Cfg;
+import io.grpc.ManagedChannel;
+import io.grpc.Status;
+import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
+import io.grpc.netty.shaded.io.netty.channel.ChannelOption;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 
@@ -15,6 +20,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class AbcPrivateBankingChatxSearchGatewayService extends AbcPrivateBankingChatxSearchGatewayServiceGrpc.AbcPrivateBankingChatxSearchGatewayServiceImplBase
 {
+
+
+
+    public void sleep(long sek) throws InterruptedException {
+     Thread.sleep(sek);
+    }
+
     public String generator(int id){
         AtomicInteger idCounter =  new AtomicInteger(id);
         long timestamp = System.currentTimeMillis();
@@ -209,11 +221,22 @@ public class AbcPrivateBankingChatxSearchGatewayService extends AbcPrivateBankin
 
         individualsByF.add(individual1);
 
-        IndividualByFResponse response = IndividualByFResponse.newBuilder()
-                .addAllIndividual(individualsByF)
-                .build();
-        responseObserver.onNext(response);
-        responseObserver.onCompleted();
+        try {
+            IndividualByFResponse response = IndividualByFResponse.newBuilder()
+                    .addAllIndividual(individualsByF)
+                    .build();
+            if (!Cfg.mapEnable.get(this.getClass().getSimpleName())) {
+                responseObserver.onError(new Exception("No individuals found"));
+            } else {
+                Thread.sleep(Cfg.mapResponse.get(this.getClass().getSimpleName()));
+                responseObserver.onNext(response);
+                responseObserver.onCompleted();
+            }
+        }
+        catch (Exception e){
+            Status status = Status.INTERNAL.withDescription(e.getMessage());
+            responseObserver.onError(status.asRuntimeException());
+        }
     }
 
     @Override
@@ -429,10 +452,23 @@ public class AbcPrivateBankingChatxSearchGatewayService extends AbcPrivateBankin
 
         individualsByFio.add(individual7);
 
-        IndividualByFioResponse response = IndividualByFioResponse.newBuilder()
-                .addAllIndividual(individualsByFio)
-                .build();
-        responseObserver.onNext(response);
-        responseObserver.onCompleted();
+
+        try {
+            IndividualByFioResponse response = IndividualByFioResponse.newBuilder()
+                    .addAllIndividual(individualsByFio)
+                    .build();
+            if(!Cfg.mapEnable.get(this.getClass().getSimpleName())){
+                responseObserver.onError(new Exception("No individuals found"));
+            }
+        else{
+                Thread.sleep(Cfg.mapResponse.get(this.getClass().getSimpleName()));
+                responseObserver.onNext(response);
+                responseObserver.onCompleted();
+            }
+        }
+        catch (Exception e){
+            Status status = Status.INTERNAL.withDescription(e.getMessage());
+            responseObserver.onError(status.asRuntimeException());
+        }
     }
 }
