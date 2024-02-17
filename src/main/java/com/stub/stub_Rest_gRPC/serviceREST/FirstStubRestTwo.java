@@ -1,6 +1,6 @@
 package com.stub.stub_Rest_gRPC.serviceREST;
 
-public class FirstStubRestTwo {
+public class FirstStubRestTwo implements Services{
 
     public FirstStubRestTwo() {
     }

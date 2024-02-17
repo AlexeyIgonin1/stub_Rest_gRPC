@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action = "/" method="get">
+    <input type="submit" value="Главная">
+</form>
+
+<form action = "/admin/enable" method="get">
+    <input type="submit" value="Изменить состояние сервисов заглушки">
+</form>
+
+
+<h1>Form</h1>
+<form action="#" th:action="@{/admin/response}" th:object="${cfg}" method="post">
+
+    <fieldset>
+        <legend>Настройка задержки по операциям</legend>
+        <p th:each="item : ${cfg.editMapResponse}">
+            <label th:text="${item.key}">:</label>
+            <input name="item.value"
+                   type="number"
+                   th:field="${cfg.editMapResponse[__${item.key}__]}"
+                   th:value="${item.value}"
+            />В миллисекундах</p>
+    </fieldset>
+    <p><input type="submit" th:value="Отправить"></p>
+    <p><input type="reset" value="Сбросить"></p>
+
+</form>
+
+
+</body>
+</html>

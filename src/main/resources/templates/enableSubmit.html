@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action = "/" method="get">
+    <input type="submit" value="Главная">
+</form>
+
+<form action = "/admin/response" method="get">
+    <input type="submit" value="Изменить времени отклика заглушки">
+</form>
+
+<h1>Result</h1>
+
+<tr th:each="item : ${cfg.mapEnable}">
+    <p>
+        <td th:text="${item.key}">KeyValue</td>
+        <td th:text="${item.value}">num</td>
+    </p>
+</tr>
+
+<a href="/admin/enable">Изменить состояние сервисов звглушки</a>
+
+</body>
+</html>

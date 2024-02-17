@@ -3,6 +3,7 @@ package com.stub.stub_Rest_gRPC.utilit;
 import com.stub.stub_Rest_gRPC.serviceREST.FirstStubRest;
 import com.stub.stub_Rest_gRPC.serviceREST.FirstStubRestOne;
 import com.stub.stub_Rest_gRPC.serviceREST.FirstStubRestTwo;
+import com.stub.stub_Rest_gRPC.serviceREST.StubRestFile;
 import com.stub.stub_Rest_gRPC.stubService.stubServiceSearchByF_Fio.AbcPrivateBankingChatxSearchGatewayService;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +22,8 @@ public class CfgTwo {
         Arrays.asList(
                 FirstStubRestOne.class,
                 FirstStubRestTwo.class,
-                AbcPrivateBankingChatxSearchGatewayService.class
+                AbcPrivateBankingChatxSearchGatewayService.class,
+                StubRestFile.class
         ).forEach(aClass ->{
             mapResponseTwo.put(aClass.getSimpleName(), 0);
             mapEnableTwo.put(aClass.getSimpleName(), true);
