@@ -1,6 +1,8 @@
 package com.stub.stub_Rest_gRPC.utilit;
 
 import com.stub.stub_Rest_gRPC.serviceREST.FirstStubRest;
+import com.stub.stub_Rest_gRPC.serviceREST.StubRestFile;
+import com.stub.stub_Rest_gRPC.serviceREST.StubRestTWOResponse;
 import com.stub.stub_Rest_gRPC.stubService.stubServiceSearchByF_Fio.AbcPrivateBankingChatxSearchGatewayService;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +19,9 @@ public static Map<String, Boolean> mapEnable = new HashMap<>();
 static {
     Arrays.asList(
             FirstStubRest.class,
-            AbcPrivateBankingChatxSearchGatewayService.class
+            AbcPrivateBankingChatxSearchGatewayService.class,
+            StubRestTWOResponse.class,
+            StubRestFile.class
     ).forEach(aClass ->{
         mapResponse.put(aClass.getSimpleName(), 0);
         mapEnable.put(aClass.getSimpleName(), true);

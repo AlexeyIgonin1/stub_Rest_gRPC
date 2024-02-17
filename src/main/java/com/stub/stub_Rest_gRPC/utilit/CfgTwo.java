@@ -22,8 +22,8 @@ public class CfgTwo {
         Arrays.asList(
                 FirstStubRestOne.class,
                 FirstStubRestTwo.class,
-                AbcPrivateBankingChatxSearchGatewayService.class,
-                StubRestFile.class
+                AbcPrivateBankingChatxSearchGatewayService.class
+
         ).forEach(aClass ->{
             mapResponseTwo.put(aClass.getSimpleName(), 0);
             mapEnableTwo.put(aClass.getSimpleName(), true);
