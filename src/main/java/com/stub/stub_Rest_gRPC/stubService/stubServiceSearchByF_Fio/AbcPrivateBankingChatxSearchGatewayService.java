@@ -23,9 +23,9 @@ public class AbcPrivateBankingChatxSearchGatewayService extends AbcPrivateBankin
 
 
 
-    public void sleep(long sek) throws InterruptedException {
-     Thread.sleep(sek);
-    }
+//    public void sleep(long sek) throws InterruptedException {
+//     Thread.sleep(sek);
+//    }
 
     public String generator(int id){
         AtomicInteger idCounter =  new AtomicInteger(id);

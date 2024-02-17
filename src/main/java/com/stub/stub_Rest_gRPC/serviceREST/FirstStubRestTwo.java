@@ -1,16 +1,13 @@
 package com.stub.stub_Rest_gRPC.serviceREST;
 
-import org.springframework.stereotype.Service;
+public class FirstStubRestTwo {
 
-@Service
-public class FirstStubRest implements Services {
+    public FirstStubRestTwo() {
+    }
 
     private String response;
 
-    public FirstStubRest() {
-    }
-
-    public String getResponse() {
+    public String getResponse(){
         response = " {\n" +
                 " \"messageStatuses\" : [\n" +
                 " {\n" +
@@ -21,6 +18,5 @@ public class FirstStubRest implements Services {
                 "}";
         return response;
     }
-
 
 }

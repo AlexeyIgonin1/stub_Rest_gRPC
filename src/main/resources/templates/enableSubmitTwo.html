@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action = "/" method="get">
+    <input type="submit" value="Главная">
+</form>
+
+<form action = "/admin/response/two" method="get">
+    <input type="submit" value="Изменить времени отклика заглушки pb">
+</form>
+
+<h1>Result</h1>
+
+<tr th:each="itemTwo : ${cfgTwo.mapEnableTwo}">
+  <p>
+  <td th:text="${itemTwo.key}">KeyValue</td>
+  <td th:text="${itemTwo.value}">num</td>
+  </p>
+</tr>
+
+<a href="/admin/enable/two">Изменить состояние сервисов звглушки</a>
+
+
+
+</body>
+</html>

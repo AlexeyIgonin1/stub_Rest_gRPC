@@ -1,14 +1,10 @@
 package com.stub.stub_Rest_gRPC.serviceREST;
 
-import org.springframework.stereotype.Service;
-
-@Service
-public class FirstStubRest implements Services {
+public class FirstStubRestOne {
+    public FirstStubRestOne() {
+    }
 
     private String response;
-
-    public FirstStubRest() {
-    }
 
     public String getResponse() {
         response = " {\n" +

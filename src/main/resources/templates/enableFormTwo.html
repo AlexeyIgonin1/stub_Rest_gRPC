@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form action = "/" method="get">
+  <input type="submit" value="Главная">
+</form>
+
+<form action = "/admin/response/two" method="get">
+  <input type="submit" value="Изменить времени отклика заглушки pb">
+</form>
+
+<h1>Form</h1>
+<form action="#" th:action="@{/admin/enable/two}" th:object="${cfgTwo}" method="post">
+
+  <fieldset>
+    <legend>Вкл/Выкл сервисов по заглушкам</legend>
+    <p th:each="itemTwo : ${cfgTwo.editMapEnableTwo}">
+      <label th:text="${itemTwo.key}">:</label>
+      <input name="itemTwo.value"
+             type="checkbox"
+             th:field="${cfgTwo.editMapEnableTwo[__${itemTwo.key}__]}"
+             th:value="${itemTwo.value}"
+      /> Вкл/выкл</p>
+  </fieldset>
+  <p><input type="submit" th:value="Отправить"></p>
+  <p><input type="reset" value="Сбросить"></p>
+
+</form>
+
+
+</body>
+</html>
